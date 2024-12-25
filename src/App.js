@@ -1,6 +1,6 @@
 import './App.css';
-import Navigation from './Navigation'
-import Catalog from './Catalog';
+import Navigation from './components/Navigation'
+import Catalog from './components/Catalog';
 
 
 function App() {
