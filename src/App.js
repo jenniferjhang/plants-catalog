@@ -1,13 +1,16 @@
 import './App.css';
 import Navigation from './components/Navigation'
-import Catalog from './components/Catalog';
+import CatalogPage from './components/CatalogPage';
+import { MyProvider } from './context/MyContext';
 
 
 function App() {
   return (
     <div className="App">
-      <Navigation />
-      <Catalog />
+      <MyProvider>
+        <Navigation />
+        <CatalogPage />
+      </MyProvider>
     </div>
   );
 }

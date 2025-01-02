@@ -20,8 +20,8 @@ import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@her
 const navigation = {
   categories: [
     {
-      id: 'women',
-      name: 'Women',
+      id: 'shop plants',
+      name: 'Shop Plants',
       featured: [
         {
           name: 'New Arrivals',
@@ -78,8 +78,8 @@ const navigation = {
       ],
     },
     {
-      id: 'men',
-      name: 'Men',
+      id: 'new arrivals',
+      name: 'New Arrivals',
       featured: [
         {
           name: 'New Arrivals',
@@ -135,8 +135,7 @@ const navigation = {
     },
   ],
   pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
+    { name: 'About', href: '#' },
   ],
 }
 
@@ -268,7 +267,7 @@ export default function Navigation() {
       </Dialog>
 
       <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+        <p className="flex h-10 items-center justify-center bg-emerald-800 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
           Get free delivery on orders over $100
         </p>
 
@@ -298,7 +297,7 @@ export default function Navigation() {
               </div>
 
               {/* Flyout menus */}
-              <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch">
+              <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch z-0">
                 <div className="flex h-full space-x-8">
                   {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
@@ -378,6 +377,7 @@ export default function Navigation() {
               </PopoverGroup>
 
               <div className="ml-auto flex items-center">
+                {/*
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                     Sign in
@@ -399,6 +399,7 @@ export default function Navigation() {
                     <span className="sr-only">, change currency</span>
                   </a>
                 </div>
+                 */}
 
                 {/* Search */}
                 <div className="flex lg:ml-6">
