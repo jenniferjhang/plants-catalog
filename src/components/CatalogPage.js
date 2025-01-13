@@ -6,15 +6,15 @@ import MobileFilterDialog from './MobileFilterDialog'
 
 export default function CatalogPage() {
   return (
-    <div className="bg-white">
+    <div className="bg-[#FCF2E6]">
       <div>
         <MobileFilterDialog />
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-baseline justify-between pb-6 pt-24">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900">SHOP ALL</h1>
+          <div className="flex items-baseline justify-between pb-6 pt-32">
+            <h1 className="text-4xl font-bold font-display tracking-tight text-gray-900">Shop All</h1>
             <SortBy />
           </div>
-          <section aria-labelledby="products-heading" className="pb-24 pt-6">
+          <section aria-labelledby="products-heading" className="pb-24 pt-4">
             <h2 id="products-heading" className="sr-only">
               Products
             </h2>
