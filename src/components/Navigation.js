@@ -17,6 +17,7 @@ import {
 } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { navigation } from '../db/NavigationData'
+import logo from '../assets/logo.png'
 
 export default function Navigation() {
   const [open, setOpen] = useState(false)
@@ -145,9 +146,9 @@ export default function Navigation() {
         </div>
       </Dialog>
 
-      <header className="relative bg-white">
+      <header className="relative bg-white shadow-lg">
         <p className="flex h-10 items-center justify-center bg-emerald-700 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-        🪴 Get free delivery on orders over $100
+        ✨ Get free delivery on orders over $100
         </p>
 
         <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -166,11 +167,11 @@ export default function Navigation() {
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
                 <a href="#">
-                  <span className="sr-only">Your Company</span>
+                  <span className="sr-only">Potted Leaf</span>
                   <img
-                    alt=""
-                    src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-                    className="h-8 w-auto"
+                    alt="potted leaf logo"
+                    src={logo}
+                    className="h-10 w-auto"
                   />
                 </a>
               </div>
@@ -280,13 +281,13 @@ export default function Navigation() {
                 </div>
                  */}
 
-                {/* Search */}
+                {/* Search
                 <div className="flex lg:ml-6">
                   <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
                     <span className="sr-only">Search</span>
                     <MagnifyingGlassIcon aria-hidden="true" className="size-6" />
                   </a>
-                </div>
+                </div>*/}
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">

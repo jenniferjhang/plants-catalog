@@ -1,46 +1,52 @@
 import React, { createContext, useState } from 'react';
 import { products } from '../db/ProductsData';
 
-export const MyContext = createContext(); //context object
+//context object
+export const MyContext = createContext();
 
 export const MyProvider = ({ children }) => {
     const [ mobileFiltersOpen, setMobileFiltersOpen ] = useState(false);
-    const [ productCards, setProductCards ] = useState(products);
-    const [searchTerm, setSearchTerm] = useState("");
-    const [ sortState, setSortState ] = useState("asc");
+    const [ searchTerm, setSearchTerm ] = useState("");
+    const [ sortBy, setSortBy ] = useState(null);
     const [ filterState, setFilterState ] = useState("");
     //handle search
     const handleSearch = (e) => {
         setSearchTerm(e.target.value)
     }
-    //handle sort
-    const handleSort = () => {
-        setSortState(sortState === 'asc' ? 'desc' : 'asc');
-    };
-    //handle filter
-    const handleFilter = (e) => {
-        setFilterState(e.target.value)
-    }
     //filter search
     const filteredProducts = products.filter(product => {
         return product.title.toLowerCase().includes(searchTerm.toLowerCase());
     });
-    //sort function
-    const sortedProducts = [...products].sort((a,b) => {
-        if (sortState === 'asc') {
-            return a.price - b.price; //asc
-        } else {
-            return b.price - a.price; //desc
+    //handle sort change
+    const handleSortChange = (e) => {
+        setSortBy(e.target.value);
+        console.log(sortBy);
+    }
+    //handle sort order
+   const sortedProducts = sortBy ? [...products].sort((a,b) => {
+        if (sortBy === 'priceAsc') {
+            return a.price - b.price;
+        } else if (sortBy === 'priceDesc') {
+            return b.price - a.price;
         }
-    })
+   }) : products;
+
+    //handle filter
+    const handleFilter = (e) => {
+        setFilterState(e.target.value)
+    }
+    function classNames(...classes) {
+        return classes.filter(Boolean).join(' ')
+      }
+
     return (
         <MyContext.Provider
             value={{
                 mobileFiltersOpen, setMobileFiltersOpen,
-                searchTerm, setSearchTerm,
-                sortState, setSortState,
+                searchTerm, setSearchTerm, handleSearch, filteredProducts,
+                sortBy, setSortBy, handleSortChange, sortedProducts,
                 filterState, setFilterState,
-                filteredProducts, sortedProducts,
+                classNames
                 }}>
             {children}
         </MyContext.Provider>

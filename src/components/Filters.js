@@ -18,7 +18,8 @@ export default function Filters() {
             <Disclosure key={section.id} as="div" className="border-b border-zinc-300 py-6">
                 <h3 className="-my-3 flow-root">
                 <DisclosureButton className="group flex w-full items-center justify-between py-1 text-sm text-gray-400 hover:text-gray-500">
-                    <span className="font-medium text-gray-900">{section.name}</span>
+                    <span className="font-medium text-gray-900">
+                        <span className="mr-2 text-[#c47962]">{section.icon}</span>{section.name}</span>
                     <span className="ml-6 flex items-center">
                     <PlusIcon aria-hidden="true" className="size-5 group-data-[open]:hidden" />
                     <MinusIcon aria-hidden="true" className="size-5 group-[&:not([data-open])]:hidden" />

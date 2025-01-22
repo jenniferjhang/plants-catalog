@@ -8,6 +8,7 @@ import {
   } from '@headlessui/react'
 import { sortOptions } from '../db/SortFilterData'
 import { ChevronDownIcon, FunnelIcon } from '@heroicons/react/20/solid'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 
 function classNames(...classes) {
@@ -16,16 +17,36 @@ function classNames(...classes) {
 
 export default function SortBy() {
   const { mobileFiltersOpen, setMobileFiltersOpen } = useContext(MyContext);
-  const { sortState, handleSort, sortedProducts } = useContext(MyContext);
+  const { searchTerm, setSearchTerm, handleSearch } = useContext(MyContext);
+  const { sortBy, handleSortChange } = useContext(MyContext);
+
   return (
     <div className="flex items-center">
-          <Menu as="div" className="relative inline-block text-left">
+          {/* Search */}
+          <div className="flex lg:ml-6 border border-zinc-700 rounded-full p-1 mr-2 outline outline-1 -outline-offset-1 outline-zinc-700 has-[input:focus-within]:outline has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-green-800">
+            <a href="#" className="text-zinc-500 hover:text-gray-500 flex">
+              <span className="sr-only">Search</span>
+              <MagnifyingGlassIcon aria-hidden="true" className="size-6" />
+              <input
+                type='search'
+                placeholder='Search plants...'
+                className='bg-transparent text-sm outline-none w-32 placeholder:italic placeholder:text-zinc-500'
+                value={searchTerm}
+                onChange={handleSearch}
+              />
+            </a>
+          </div>
+          {/* Sort by */}
+          <Menu value={sortBy}
+              onChange={handleSortChange} as="div" className="relative inline-block text-left border border-zinc-700 rounded-full px-3 py-1">
             <div>
-              <MenuButton className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                Sort by ({sortState === 'asc' ? 'Ascending' : 'Descending'})
+              <MenuButton
+                className="group inline-flex justify-center text-sm font-medium text-zinc-700 hover:text-gray-900"
+              >
+                Sort by
                 <ChevronDownIcon
                   aria-hidden="true"
-                  className="-mr-1 ml-1 size-5 shrink-0 text-gray-400 group-hover:text-gray-500"
+                  className="-mr-1 ml-1 size-5 shrink-0 text-zinc-500 group-hover:text-zinc-500"
                 />
               </MenuButton>
             </div>
@@ -36,15 +57,13 @@ export default function SortBy() {
             >
               <div className="py-1">
                 {sortOptions.map((option) => (
-                  <MenuItem key={option.name}>
+                  <MenuItem key={option.name} value={option.value}>
                     <a
                       // href={option.href}
                       className={classNames(
                         option.current ? 'font-medium text-gray-900' : 'text-gray-500',
                         'block px-4 py-2 text-sm data-[focus]:bg-gray-100 data-[focus]:outline-none',
                       )}
-                      value={option.value}
-                      onClick={handleSort}
                     >
                       {option.name}
                     </a>

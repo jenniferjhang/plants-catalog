@@ -11,7 +11,7 @@ export default function CatalogPage() {
         <MobileFilterDialog />
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between pb-6 pt-32">
-            <h1 className="text-4xl font-bold font-display tracking-tight text-gray-900">Shop All</h1>
+            <h1 className="text-4xl font-bold font-display tracking-tight text-[#402523]">Shop All</h1>
             <SortBy />
           </div>
           <section aria-labelledby="products-heading" className="pb-24 pt-4">

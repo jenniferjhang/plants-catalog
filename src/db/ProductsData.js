@@ -1,3 +1,5 @@
+import {PetsOutlined, Sell, EmojiEvents, NewReleases } from '@mui/icons-material'
+
 export const products = [
     {
       id: 1,
@@ -11,7 +13,8 @@ export const products = [
       nature: {
         color: ['White','Black'],
         size: 'S',
-        perk: 'pet-friendly',
+        perkIcon: <PetsOutlined fontSize='small'/>,
+        perk: 'Pet friendly',
         light: '',
       }
     },
@@ -59,6 +62,7 @@ export const products = [
       nature: {
         color: ['Clay'],
         size: 'M',
+        perkIcon: <Sell fontSize='small'/>,
         perk: '35% OFF',
         light: '',
       }
@@ -75,7 +79,8 @@ export const products = [
       nature: {
         color: ['Black','White'],
         size: 'M',
-        perk: 'pet-friendly',
+        perkIcon: <PetsOutlined fontSize='small'/>,
+        perk: 'Pet friendly',
         light: '',
       }
     },
@@ -107,7 +112,8 @@ export const products = [
       nature: {
         color: ['Black'],
         size: 'S',
-        perk: 'pet-friendly',
+        perkIcon: <PetsOutlined fontSize='small'/>,
+        perk: 'Pet friendly',
         light: '',
       }
     },
@@ -123,6 +129,7 @@ export const products = [
       nature: {
         color: ['White'],
         size: 'M',
+        perkIcon: <NewReleases fontSize='small'/>,
         perk: 'new',
         light: '',
       }
@@ -130,7 +137,7 @@ export const products = [
     {
       id: 9,
       title: 'Bird of paradise',
-      price: '$70',
+      price: 70,
       description: "Known for its dramatic, banana-like leaves, the Bird of Paradise is a showstopper. It requires bright, indirect light and a bit more attention but rewards with stunning, tropical foliage.",
       href: '#',
       getImageSrc: () => require("../assets/bird of paradise.jpg"),
@@ -155,6 +162,7 @@ export const products = [
       nature: {
         color: ['White'],
         size: 'L',
+        perkIcon: <EmojiEvents fontSize='small'/>,
         perk: 'bestseller',
         light: '',
       }
