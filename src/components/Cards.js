@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { MyContext } from '../context/MyContext'
 
   export default function Cards() {
-    const { sortedProducts, classNames } = useContext(MyContext);
+    const { filteredProducts, sortedProducts, classNames } = useContext(MyContext);
 
     return (
       <div className="bg-[#FCF2E6]">
@@ -46,7 +46,7 @@ import { MyContext } from '../context/MyContext'
                     >
                     </div> */}
                   </div>
-                  <p className="font-bold text-gray-900">{product.price}</p>
+                  <p className="font-bold text-gray-900">${product.price}</p>
                 </div>
               </div>
             ))}

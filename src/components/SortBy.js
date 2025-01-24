@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { MyContext } from '../context/MyContext'
 import {
+  Field,
     Menu,
     MenuButton,
     MenuItem,
@@ -9,6 +10,7 @@ import {
 import { sortOptions } from '../db/SortFilterData'
 import { ChevronDownIcon, FunnelIcon } from '@heroicons/react/20/solid'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { Select } from '@headlessui/react'
 
 
 function classNames(...classes) {
@@ -37,12 +39,27 @@ export default function SortBy() {
             </a>
           </div>
           {/* Sort by */}
-          <Menu value={sortBy}
-              onChange={handleSortChange} as="div" className="relative inline-block text-left border border-zinc-700 rounded-full px-3 py-1">
+          <Field className="flex items-center">
+          <label className="text-sm/6 font-medium ml-3 mr-1">Sort by </label>
+            <div className="flex relative inline-block text-left text-sm font-medium text-zinc-700 border border-zinc-700 rounded-full px-3 py-1">
+              <Select value={sortBy} onChange={handleSortChange} name="sortby" aria-label="Sort by" className="appearance-none bg-transparent focus:outline-none">
+              {sortOptions.map((option) => (
+                <option key={option.name} value={option.value} className='text-sm font-medium text-zinc-700'>
+                  {option.name}
+                </option>
+              ))}
+              </Select>
+              <ChevronDownIcon
+                      aria-hidden="true"
+                      className="-mr-1 ml-1 size-6 shrink-0 text-zinc-500 group-hover:text-zinc-500"
+              />
+            </div>
+          </Field>
+
+          {/* <Menu as="div" className="relative inline-block text-left border border-zinc-700 rounded-full px-3 py-1">
             <div>
               <MenuButton
-                className="group inline-flex justify-center text-sm font-medium text-zinc-700 hover:text-gray-900"
-              >
+              className="group inline-flex justify-center text-sm font-medium text-zinc-700 hover:text-gray-900">
                 Sort by
                 <ChevronDownIcon
                   aria-hidden="true"
@@ -52,14 +69,12 @@ export default function SortBy() {
             </div>
 
             <MenuItems
-              transition
-              className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
-            >
+              transition className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in">
               <div className="py-1">
                 {sortOptions.map((option) => (
-                  <MenuItem key={option.name} value={option.value}>
+                  <MenuItem key={option.name}>
                     <a
-                      // href={option.href}
+                      href={option.href}
                       className={classNames(
                         option.current ? 'font-medium text-gray-900' : 'text-gray-500',
                         'block px-4 py-2 text-sm data-[focus]:bg-gray-100 data-[focus]:outline-none',
@@ -71,7 +86,7 @@ export default function SortBy() {
                 ))}
               </div>
             </MenuItems>
-          </Menu>
+          </Menu> */}
 
 {/*
           <button type="button" className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">

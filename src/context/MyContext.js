@@ -7,7 +7,7 @@ export const MyContext = createContext();
 export const MyProvider = ({ children }) => {
     const [ mobileFiltersOpen, setMobileFiltersOpen ] = useState(false);
     const [ searchTerm, setSearchTerm ] = useState("");
-    const [ sortBy, setSortBy ] = useState(null);
+    const [ sortBy, setSortBy ] = useState("");
     const [ filterState, setFilterState ] = useState("");
     //handle search
     const handleSearch = (e) => {
@@ -20,7 +20,7 @@ export const MyProvider = ({ children }) => {
     //handle sort change
     const handleSortChange = (e) => {
         setSortBy(e.target.value);
-        console.log(sortBy);
+        console.log(e.target.value);
     }
     //handle sort order
    const sortedProducts = sortBy ? [...products].sort((a,b) => {
@@ -28,6 +28,8 @@ export const MyProvider = ({ children }) => {
             return a.price - b.price;
         } else if (sortBy === 'priceDesc') {
             return b.price - a.price;
+        } else if (sortBy === 'new') {
+            return a.createdAt - b.createdAt;
         }
    }) : products;
 
@@ -35,6 +37,7 @@ export const MyProvider = ({ children }) => {
     const handleFilter = (e) => {
         setFilterState(e.target.value)
     }
+    //filter classes, lets me use ternary
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
       }
@@ -46,7 +49,7 @@ export const MyProvider = ({ children }) => {
                 searchTerm, setSearchTerm, handleSearch, filteredProducts,
                 sortBy, setSortBy, handleSortChange, sortedProducts,
                 filterState, setFilterState,
-                classNames
+                classNames,
                 }}>
             {children}
         </MyContext.Provider>
