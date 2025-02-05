@@ -16,7 +16,9 @@ export const products = [
         size: 'S',
         perkIcon: <PetsOutlined fontSize='small'/>,
         perk: 'Pet friendly',
-        light: '',
+        light: 'low',
+        care: 'easy',
+        water: 'low',
       }
     },
     {
@@ -33,7 +35,9 @@ export const products = [
         color: ['Clay'],
         size: 'M',
         perk: '',
-        light: '',
+        light: 'partial',
+        care: 'easy',
+        water: 'low',
       }
     },
     {
@@ -50,7 +54,9 @@ export const products = [
         color: ['Clay','White','Black'],
         size: 'M',
         perk: '',
-        light: '',
+        light: 'partial',
+        care: 'moderate',
+        water: 'low',
       }
     },
     {
@@ -68,7 +74,9 @@ export const products = [
         size: 'M',
         perkIcon: <Sell fontSize='small'/>,
         perk: '35% OFF',
-        light: '',
+        light: 'direct',
+        care: 'easy',
+        water: 'low',
       }
     },
     {
@@ -86,7 +94,9 @@ export const products = [
         size: 'M',
         perkIcon: <PetsOutlined fontSize='small'/>,
         perk: 'Pet friendly',
-        light: '',
+        light: 'partial',
+        care: 'easy',
+        water: 'low',
       }
     },
     {
@@ -103,7 +113,9 @@ export const products = [
         color: ['White'],
         size: 'S',
         perk: '',
-        light: '',
+        light: 'partial',
+        care: 'moderate',
+        water: 'low',
       }
     },
     {
@@ -121,7 +133,9 @@ export const products = [
         size: 'S',
         perkIcon: <PetsOutlined fontSize='small'/>,
         perk: 'Pet friendly',
-        light: '',
+        light: 'low',
+        care: 'easy',
+        water: 'low',
       }
     },
     {
@@ -139,7 +153,9 @@ export const products = [
         size: 'M',
         perkIcon: <NewReleases fontSize='small'/>,
         perk: 'new',
-        light: '',
+        light: 'low',
+        care: 'easy',
+        water: 'low',
       }
     },
     {
@@ -156,7 +172,9 @@ export const products = [
         color: ['White', 'Clay'],
         size: 'L',
         perk: '',
-        light: '',
+        light: 'partial',
+        care: 'easy',
+        water: 'low',
       }
     },
     {
@@ -174,7 +192,9 @@ export const products = [
         size: 'L',
         perkIcon: <EmojiEvents fontSize='small'/>,
         perk: 'bestseller',
-        light: '',
+        light: 'low',
+        care: 'easy',
+        water: 'low',
       }
     },
 

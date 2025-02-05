@@ -8,13 +8,13 @@ export const MyProvider = ({ children }) => {
     const [ mobileFiltersOpen, setMobileFiltersOpen ] = useState(false);
     const [ searchTerm, setSearchTerm ] = useState("");
     const [ sortBy, setSortBy ] = useState("");
-    const [ filterState, setFilterState ] = useState("");
+    const [ filterBy, setFilterBy ] = useState("");
     //handle search
     const handleSearch = (e) => {
         setSearchTerm(e.target.value)
     }
-    //filter search
-    const filteredProducts = products.filter(product => {
+    //search logic
+    const searchedProducts = products.filter(product => {
         return product.title.toLowerCase().includes(searchTerm.toLowerCase());
     });
     //handle sort change
@@ -22,7 +22,7 @@ export const MyProvider = ({ children }) => {
         setSortBy(e.target.value);
         console.log(e.target.value);
     }
-    //handle sort order
+    //sort logic
    const sortedProducts = sortBy ? [...products].sort((a,b) => {
         if (sortBy === 'priceAsc') {
             return a.price - b.price;
@@ -32,11 +32,39 @@ export const MyProvider = ({ children }) => {
             return a.createdAt - b.createdAt;
         }
    }) : products;
-
     //handle filter
     const handleFilter = (e) => {
-        setFilterState(e.target.value)
+        if (e.target.checked) {
+            setFilterBy([...filterBy, e.target.value]); //place both in array
+            console.log(e.target.value);
+            //when checked, grabs value
+            //when unchecked, doesn't double grab value
+        } else {
+            setFilterBy(filterBy.filter((filterValue) => filterValue !== e.target.value));
+            //when unchecked, remove value from array
+        }
     }
+    //filter logic
+    const filteredProducts = filterBy.length > 0 ? [...products].filter((item) => {
+        return filterBy.includes(item.nature.size) ||
+            filterBy.includes(item.nature.light) ||
+            filterBy.includes(item.nature.care) ||
+            filterBy.includes(item.nature.water) ||
+            filterBy.includes(item.nature.perk) ||
+            filterBy >= (item.price);
+    }) : products;
+
+    function filteredData() {
+        let result = products;
+        if (searchTerm) {
+            result = searchedProducts;
+        } else if (sortBy) {
+            result = sortedProducts;
+        } else if (filterBy.length > 0) {
+            result = filteredProducts;
+        }
+        return result;
+    };
     //filter classes, lets me use ternary
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
@@ -46,9 +74,9 @@ export const MyProvider = ({ children }) => {
         <MyContext.Provider
             value={{
                 mobileFiltersOpen, setMobileFiltersOpen,
-                searchTerm, setSearchTerm, handleSearch, filteredProducts,
-                sortBy, setSortBy, handleSortChange, sortedProducts,
-                filterState, setFilterState,
+                searchTerm, setSearchTerm, handleSearch,
+                sortBy, setSortBy, handleSortChange,
+                filterBy, setFilterBy, handleFilter, filteredData: filteredData(),
                 classNames,
                 }}>
             {children}

@@ -7,9 +7,9 @@ export const sortOptions = [
     { name: 'Price: High to Low', href: '#', current: false, value: "priceDesc" },
   ]
   export const subCategories = [
-    { name: 'Bestselling', href: '#' },
-    { name: 'Easy care', href: '#' },
-    { name: 'Pet safe', href: '#' },
+    { name: 'Bestselling', href: '#', value: 'bestseller' },
+    { name: 'Easy care', href: '#', value: 'easy' },
+    { name: 'Pet safe', href: '#', value: 'Pet friendly' },
   ]
   export const filters = [
     {
@@ -17,7 +17,9 @@ export const sortOptions = [
       name: 'Price',
       icon: <AttachMoneyOutlined/>,
       options: [
-        { value: '$100', label: '$100', checked: false },
+        { value: 20, label: 'Up to $20', checked: false },
+        { value: 50, label: 'Up to $50', checked: false },
+        { value: 100, label: 'Up to $100', checked: false },
       ],
     },
     {
@@ -65,7 +67,7 @@ export const sortOptions = [
       name: 'Pet friendly',
       icon: <PetsOutlined/>,
       options: [
-        { value: 'pet-safe', label: 'Pet safe', checked: false },
+        { value: 'Pet friendly', label: 'Pet safe', checked: false },
       ],
     },
   ]

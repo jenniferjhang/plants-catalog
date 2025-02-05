@@ -1,15 +1,18 @@
+import { useContext } from 'react'
+import { MyContext } from '../context/MyContext'
 import { subCategories, filters } from "../db/SortFilterData"
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 
 export default function Filters() {
+    const { filterBy, setFilterBy, handleFilter } = useContext(MyContext);
     return (
         <form className="hidden lg:block">
             <h3 className="sr-only">Categories</h3>
             <ul role="list" className="space-y-4 border-b border-zinc-300 py-6 text-sm font-medium text-gray-900">
             {subCategories.map((category) => (
                 <li key={category.name}>
-                <a href={category.href}>{category.name}</a>
+                <a href={category.href} value={category.value} onClick={handleFilter}>{category.name}</a>
                 </li>
             ))}
             </ul>
@@ -35,6 +38,7 @@ export default function Filters() {
                             <input
                             defaultValue={option.value}
                             defaultChecked={option.checked}
+                            onChange={handleFilter}
                             id={`filter-${section.id}-${optionIdx}`}
                             name={`${section.id}[]`}
                             type="checkbox"
